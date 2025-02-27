@@ -242,9 +242,9 @@ def send_email():
         # ✅ SMTP 서버 설정
         smtp_server = "smtp.gmail.com"
         smtp_port = 587
-        sender_email = "20221095@edu.hanbat.ac.kr"
-        receiver_email = "luonj@naver.com"
-        app_password = "qcfc rjkd ymlj gsce"
+        sender_email = "xxxxxxxx@xxx.xxx"
+        receiver_email = "xxxxxx@xxxxx.xxx"
+        app_password = "xxxx xxxx xxxx xxxx"
 
         # ✅ 이메일 전송
         try:
