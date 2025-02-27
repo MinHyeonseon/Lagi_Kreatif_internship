@@ -1,0 +1,628 @@
+/* 📌 Google Fonts 가져오기 */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+
+/* ✅ 검색창과 메뉴를 감싸는 컨테이너 */
+.search-menu-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-grow: 1;  /* 검색창과 메뉴 크기 자동 조정 */
+    justify-content: center; /* 가운데 정렬 */
+}
+
+/* ✅ 네비게이션 메뉴 (왼쪽으로 조금 이동) */
+.top-menu {
+    display: flex;
+    gap: 10px;
+    flex: 0.5; /* ✅ 메뉴 크기 자동 조정 */
+    justify-content: center; /* ✅ 중앙 정렬 */
+    margin-left: -170px; /* ✅ 왼쪽으로 30px 이동 */
+    margin-right: 20px; /* ✅ 버튼과의 간격 추가 */
+}
+
+/* ✅ 상단 메뉴 스타일 */
+.top-menu a {
+    text-decoration: none;
+    color: rgb(5, 5, 5);
+    font-weight: bold;
+    padding: 10px 15px;
+    transition: all 0.3s ease-in-out;
+}
+
+.top-menu a:hover {
+    background-color:  rgb(228, 225, 225);
+    border-radius: 5px;
+}
+
+
+.search-container {
+    flex: 1; /* ✅ 검색창이 적절한 크기로 조정되도록 */
+    display: flex;
+    justify-content: center; /* ✅ 중앙 정렬 */
+    margin-left: -127px; /* 🔥 왼쪽으로 이동 */
+}
+
+/*====================================================*/
+/* =================== 카테고리 부분 =================== */
+/*====================================================*/
+/* ✅ 카테고리 드롭다운 스타일 */
+.dropdown {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-left: 8px; /* 🔥 카테고리 버튼을 로고에서 적당한 거리로 이동 */
+}
+
+.dropbtn {
+    background-color:  #eb0028ff;
+    color: white;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    z-index: 1;
+    top: 100%;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/*====================================================*/
+/* ================================================== */
+/*====================================================*/
+
+.footer p {
+    font-size: 14px;
+}
+
+/* 📌 전체 스타일 */
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.nav-left{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* 📌 검색창을 감싸는 컨테이너 */
+.search-container {
+    flex: 1; /* ✅ 검색창이 적절한 크기로 조정되도록 */
+    display: flex;
+    justify-content: center; /* ✅ 중앙 정렬 */
+}
+
+/* 📌 검색창 스타일 */
+#searchBar {
+    padding: 10px 15px;
+    width: 60%;
+    max-width: 300px;
+    border: 2px solid hsl(0, 0%, 0%);
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+}
+
+/* 📌 검색창 호버 & 포커스 효과 */
+#searchBar:hover, 
+#searchBar:focus {
+    border-color: #ff0000; /* ✅ 좀 더 진한 빨강으로 변경 */
+    box-shadow: 0px 4px 10px rgb(255, 255, 255); /* ✅ 부드러운 그림자 효과 */
+    background-color: #ffffff; /* ✅ 은은한 배경 강조 */
+}
+
+/* 📌 로고 */
+.logo {
+    width: 160px;
+    height: auto;
+}
+
+/* 📌 로그인 & 카트 버튼 컨테이너 */
+.top-right {
+    display: flex;
+    align-items: center;
+    gap: 30px; /* ✅ 버튼 간격 */
+    margin-right: -10px; /* 🔥 오른쪽 여백 줄이기 (기존보다 작은 값으로 조정) */
+}
+
+/* 📌 로그인 & 장바구니 버튼 스타일 (강제 적용) */
+.login-button, .cart-button {
+    display: inline-block!important;
+    padding: 9px 17px!important;
+    font-size: 13px!important;
+    font-weight: bold!important;
+    color: white !important;  /* ✅ 강제 적용 */
+    background-color: #eb0028ff !important;  /* ✅ 강제 적용 */
+    border: none!important;
+    border-radius: 25px!important;
+    text-decoration: none!important;
+    transition: all 0.3s ease-in-out!important;
+    box-shadow: 3px 3px 10px rgba(255, 77, 77, 0.3)!important; 
+}
+
+/* 📌 버튼 호버 효과 */
+.login-button:hover, .cart-button:hover {
+    background-color: #d30327ff !important;  /* ✅ 강제 적용 */
+    transform: scale(1.05);
+    box-shadow: 4px 4px 12px rgba(255, 77, 77, 0.5);
+}
+
+.dropdown {
+    position: relative;
+}
+
+.login-container input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid #db8181df;
+    border-radius: 10px;
+    font-size: 16px;
+    outline: none;
+}
+
+
+/* 📌 마우스를 올렸을 때 효과 */
+.main-cart-button:hover {
+    background-color: #ff0c0c !important;
+    transform: scale(1.1) !important;
+    box-shadow: 4px 4px 12px rgba(255, 107, 129, 0.5) !important;
+}
+
+/* 📌 "장바구니에 추가" 버튼 스타일 */
+.cart-button {
+    display: inline-block;
+    padding: 12px 18px; /* 버튼 크기 조정 */
+    font-size: 16px;
+    font-weight: bold;
+    color: rgb(255, 90, 90);
+    background-color: #FFB6C1; /* 귀여운 핑크 색상 */
+    border: none;
+    border-radius: 50px; /* ✅ 동글동글하게 */
+    text-decoration: none;
+    font-family: 'Baloo 2', sans-serif;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 3px 3px 10px rgba(255, 107, 129, 0.3);
+    cursor: pointer;
+    position: relative;  /* 🔥 위치 조정을 가능하게 설정 */
+    right: 25px;  /* 🔥 왼쪽으로 10px 이동 */
+    }
+
+
+.nav-bar {
+    position: fixed; /* 스크롤 시에도 고정 */
+    top: 0; /* 화면 상단에 고정 */
+    left: 0;
+    width: 100%; /* 화면의 전체 너비로 설정 */
+    background-color: #fff; /* 배경색 설정 (필요에 따라 조정) */
+    z-index: 1000; /* 다른 요소보다 위에 보이도록 설정 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+/* 페이지 콘텐츠가 상단 바에 가려지지 않도록 패딩 추가 */
+body {
+    padding-top: 70px; /* 상단 바의 높이만큼 패딩 추가 */
+}
+
+/* ====================================================== */
+
+/* ====================================================== */
+
+/* ====================================================== */
+
+/* ====================================================== */
+
+/* 📌 책 상세 페이지 레이아웃 */
+.book-detail-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 50px;
+}
+
+/* 📌 왼쪽 이미지 영역 */
+.book-image {
+    flex: 3;
+    padding-right: 0px;
+    margin-top: 40px;
+}
+
+.book-image img {
+    width: 70%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* 📌 오른쪽 책 정보 영역 */
+.book-info {
+    flex: 2;
+    /* display: flex; */
+    flex-direction: column;
+    /* text-align: left; */
+    margin-top: 20px;
+    margin-right: 30px;
+
+}
+
+/* 📌 책 제목 */
+.book-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+/* 📌 가격 및 할인 정보 */
+.price-info, .shipping-info, .payment-method {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+/* 📌 가격 스타일 */
+.book-price {
+    font-size: 24px;
+    font-weight: bold;
+    color: #e74c3c;
+}
+
+
+
+/* ====================================================== */
+
+/* ====================================================== */
+
+/* ====================================================== */
+
+/* ====================================================== */
+
+
+
+/* 전체 컨테이너에 flex 적용 */
+.purchase-options {
+    display: flex;
+    align-items: center; /* 세로 정렬을 가운데로 */
+    justify-content: flex-start; /* 왼쪽 정렬 */
+    gap: 20px; /* 두 요소 사이 간격을 설정 */
+}
+
+/* 숫자 선택기와 버튼 크기 맞추기 */
+input[type="number"] {
+    width: 50px; /* 입력 필드 크기 설정 */
+    height: 30px; /* 높이 설정 */
+    text-align: center; /* 텍스트 가운데 정렬 */
+    margin-right: 30px;
+}
+
+.cart-button{
+    gap: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #FF4747;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #e60000;
+}
+
+
+/* ====================================================== */
+
+/* ====================================================== */
+
+/* ====================================================== */
+
+/* ====================================================== */
+
+
+/* 📌 책 상세 페이지 레이아웃 */
+.book-content {
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 50px; /* 박스 내부 여백 */
+    margin-top: 20px; /* 위쪽과 간격을 띄우기 */
+}
+/* For fixed width and height */
+.image-container img {
+    width: 50%; /* Adjust the width to fit the container */
+    height: auto; /* Keep the aspect ratio */
+}
+.product-specifications{
+    margin-top: 70px;
+}
+.specifications-list,
+.kelebihan-list {
+    text-align: left;
+    margin-bottom: 70px;
+    margin-left: 300px; /* Optional: To add some space from the left edge */
+}
+
+/* 접고 피기 */
+.specifications-list div,
+.kelebihan-list div {
+    margin-bottom: 10px; /* Adds spacing between items */
+}
+
+.book-content.collapsed {
+    max-height: 500px;  /* 접을 때 최대 높이를 설정 */
+    overflow: hidden;  /* 내용이 넘치지 않도록 숨깁니다 */
+    transition: max-height 0.3s ease-out; /* 부드럽게 펼쳐지고 접히게 함 */
+}
+/* book-content가 펼쳐졌을 때의 스타일 */
+.book-content {
+    max-height: none; /* 펼쳐지면 제한이 없음 */
+    overflow: visible;
+}
+
+.toggle-button-container {
+    background-color: rgb(255, 255, 255);
+    padding: 30px; /* 내부 여백 */
+    max-width: 1200px; /* 이미지 크기와 일치하도록 수정 */
+    padding: 50px; /* 박스 내부 여백 */
+    margin: 0 auto; /* 자동으로 중앙 정렬 */
+    text-align: center; /* 텍스트 중앙 정렬 */
+    margin-bottom: 20px;
+}
+
+/* ====================================================== */
+
+/* ====================================================== */
+
+/* ====================================================== */
+
+/* ====================================================== */
+
+/* 📌 댓글 기능 구현 */
+/* .comment {
+    background-color: white;
+    margin-top: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px;
+} */
+
+/* 댓글 영역 스타일 */
+.comment-section {
+    background-color: white;
+    padding: 50px;
+    border-radius: 10px;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    resize: none;
+    
+}
+
+.c_button {
+    background-color: #FF4747;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center; /* 버튼 텍스트 중앙 정렬 */
+    margin-bottom: 20px;
+}
+
+c_button:hover {
+    background-color: #45a049;
+    
+}
+
+/* 댓글 스타일 */
+.comment {
+    width: 98.4%;
+    background-color: #fbfbfb;
+    text-align: left;
+    border: 1px solid #ededed;
+    padding: 20px;
+    margin-top: 10px;
+
+}
+/* 대댓글 스타일 */
+.c-comment {
+    background-color: #f5f5f5;
+    padding: 10px;
+    text-align: left;
+    margin-top: 2px;
+    width: 80%;
+    margin-left: auto; /* 오른쪽으로 밀기 */
+    display: flex; /* block으로 변경하여 오른쪽으로 정렬 */
+    justify-content: space-between;
+}
+
+/* 댓글 내용 */
+.comment p {
+    margin: 0;
+    font-size: 14px;
+    color: #333;
+    flex-grow: 1; /* 댓글 내용이 가능한 공간을 모두 차지하도록 */
+}
+
+.c-comment p {
+    margin: 0;
+    font-size: 14px;
+    color: #333;
+    flex-grow: 1;
+}
+
+/* 댓글 수정 및 삭제 버튼을 flex로 수평 배치 */
+.comment-actions {
+    display: flex;
+}
+
+.comment-actions button {
+    background-color: #f4433685;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.comment-actions button.edit {
+    background-color: #2195f385;
+}
+
+.comment-actions button:hover {
+    opacity: 0.8;
+}
+
+/* 대댓글 입력란과 버튼을 flex로 배치 */
+.reply-input-container {
+    display: flex; /* flexbox 사용 */
+    justify-content: space; /* 기본적으로 왼쪽 정렬 */
+    width: 81%; /* 부모 요소 너비를 채움 */
+    margin-left: auto; /* 오른쪽으로 밀기 */
+    margin-top: 20px; /* 위쪽 간격 */
+    padding: auto;
+    margin-right: 8px;
+}
+
+/* 대댓글 입력란 스타일 */
+.reply-input {
+    flex: 1; /* 입력란이 가능한 공간을 다 차지하도록 */
+    padding: 3px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ededed;
+    background-color: #ededed;
+}
+
+/* 대댓글 버튼 스타일 */
+.reply-button {
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: auto; /* 버튼을 오른쪽으로 밀기 */
+}
+
+.reply-button:hover {
+    background-color: #3c923f;
+}
+
+
+/* ====================================================== */
+
+/* ====================================================== */
+
+/* ====================================================== */
+
+/* ====================================================== */
+
+
+/* 📌 푸터 스타일 */
+.footer {
+
+    padding: 40px 0;
+    text-align: center;
+    border-top: 1px solid rgba(0, 0, 0, 0.1); /* 상단 경계선 */
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.footer-left {
+    flex: 1;
+    text-align: left;
+}
+
+.footer-logo {
+    width: 150px; /* 로고 크기 조정 */
+}
+
+.footer-center {
+    flex: 2;
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+    line-height: 1.5;
+}
+
+.footer-center a {
+    color: #cc0000;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer-right {
+    flex: 1;
+    text-align: right;
+}
+
+.footer-right a img:hover {
+    transform: scale(1.1);
+}
+
+.copyright {
+    margin-top: 40px;
+    font-size: 12px;
+    color: #777;
+}
+

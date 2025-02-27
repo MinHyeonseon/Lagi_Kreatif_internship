@@ -1,0 +1,682 @@
+/* 📌 Google Fonts 가져오기 */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+
+/* 📌 전체 스타일 */
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+
+.nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 35px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    display: flex;
+    flex-grow: 1; /* ✅ 메뉴를 중앙에 배치 */
+    justify-content: center; /* ✅ 정확히 중앙 정렬 */
+}
+
+/* 📌 검색창을 감싸는 컨테이너 */
+.search-container {
+    flex: 1; /* ✅ 검색창이 적절한 크기로 조정되도록 */
+    display: flex;
+    justify-content: center; /* ✅ 중앙 정렬 */
+}
+
+/* 📌 검색창 스타일 */
+#searchBar {
+    padding: 10px 15px;
+    width: 200px;
+    max-width: 250px;
+    border: 2px solid hsl(0, 0%, 0%);
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+}
+
+/* 📌 검색창 호버 & 포커스 효과 */
+#searchBar:hover, 
+#searchBar:focus {
+    border-color: #ba0020ff; /* ✅ 좀 더 진한 빨강으로 변경 */
+    box-shadow: 0px 4px 10px rgb(255, 255, 255); /* ✅ 부드러운 그림자 효과 */
+    background-color: #ffffff; /* ✅ 은은한 배경 강조 */
+}
+
+/* 📌 로고 */
+.logo {
+    width: 140px;
+    height: auto;
+}
+
+/* 📌 로그인 & 카트 버튼 컨테이너 */
+.top-right {
+    display: flex;
+    align-items: center;
+    gap: 30px; /* ✅ 버튼 간격 */
+    margin-right: 25px; /* 🔥 오른쪽 여백 줄이기 (기존보다 작은 값으로 조정) */
+}
+
+
+/* 📌 로그인 & 장바구니 버튼 스타일 (강제 적용) */
+.login-button, .cart-button {
+    display: inline-block!important;
+    padding: 9px 17px!important;
+    font-size: 13px!important;
+    font-weight: bold!important;
+    color: white !important;  /* ✅ 강제 적용 */
+    background-color: #eb0028ff !important;  /* ✅ 강제 적용 */
+    border: none!important;
+    border-radius: 25px!important;
+    text-decoration: none!important;
+    transition: all 0.3s ease-in-out!important;
+    box-shadow: 3px 3px 10px rgba(255, 77, 77, 0.3)!important; 
+}
+
+/* 📌 버튼 호버 효과 */
+.login-button:hover, .cart-button:hover {
+    background-color: #d30327ff !important;  /* ✅ 강제 적용 */
+    transform: scale(1.05);
+    box-shadow: 4px 4px 12px rgba(255, 77, 77, 0.5);
+}
+/* 배너 전체 컨테이너 */
+.banner-container {
+    margin-top: 50;
+    position: relative;
+    width: 83%;
+    max-width: 900px;
+    height: 330px;
+    overflow: hidden;
+    margin: 50px auto;
+    border-radius: 15px; /* 둥근 모서리 */
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1); /* 그림자 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 개별 배너 슬라이드 */
+.banner-slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0; /* 기본적으로 안 보이게 설정 */
+    transition: opacity 1s ease-in-out;
+    display: none;
+}
+
+/* 현재 보이는 슬라이드 */
+.banner-slide.active {
+    opacity: 1;
+} 
+
+/* 📌 책 목록 스타일 */
+.book-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* 자동 정렬 */
+    gap: 20px;
+    justify-content: center;
+    align-items: start; /* ✅ 높이를 맞추기 위해 start 사용 */
+    padding: 20px;
+    max-width: 1000px;
+    width: 75%;  /* 🔥 책 목록 크기 줄이기 */
+    max-width: 1100px;  /* 🔥 최대 크기 제한 */
+    margin-left: auto;  /* 🔥 오른쪽으로 이동 */
+    margin-right: auto;
+}
+
+/* 📌 개별 책 스타일 */
+.book {
+    width: 200px;  /* ✅ 고정 크기 설정 */
+    height: 380px; /* ✅ 높이도 일정하게 맞추기 */
+    padding: 15px;
+    text-align: center;
+    border-radius: 15px;
+    background: white;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* ✅ 내부 요소를 균형 맞춰 정렬 */
+    align-items: center;
+}
+
+/* 📌 책 이미지 스타일 (통일된 크기 유지) */
+.book img {
+    width: 90%; /* ✅ 가로 크기 맞추기 */
+    height: 200px; /* ✅ 이미지 높이 고정 */
+    object-fit: cover; /* ✅ 이미지가 잘리지 않고 꽉 차게 */
+    border-radius: 10px;
+}
+
+/* 📌 책 제목 스타일 */
+.book-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #000000; /* ✅ 깔끔한 색상 */
+    font-family: 'Nunito', sans-serif;
+    text-align: center;
+    margin-top: 19px;
+    line-height: 1.3;
+}
+
+/* 📌 가격 스타일 */
+.book-price {
+    font-size: 18px !important;  /* ✅ 강제 적용 */
+    font-weight: bold !important;
+    color: #222 !important;
+    margin-bottom: 10px !important; /* ✅ 간격 유지 */
+}
+
+/* 📌 아이콘 크기 조정 */
+.cart-button i {
+    font-size: 14px !important;
+}
+
+
+/* 📌 책 카드 전체에 호버 효과 추가 */
+.book:hover {
+    transform: scale(1.05);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2); /* ✅ 부드러운 그림자 효과 */
+}
+
+
+
+/* 📌 로그인 페이지 스타일 */
+.login-container {
+    width: 300px;
+    padding: 20px;
+    background:#ffffff;
+    border-radius: 15px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: 100px auto;
+}
+
+.login-container h2 {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 24px;
+    color: #000000;
+    margin-bottom: 15px;
+}
+
+.login-container input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid #ff8f8fdf;
+    border-radius: 10px;
+    font-size: 16px;
+    outline: none;
+}
+
+.login-submit {
+    width: 100%;
+    padding: 12px;
+    background-color: #eb0028ff;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-family: 'Baloo 2', sans-serif;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.login-submit:hover {
+    background-color: #d30327ff;
+    box-shadow: 3px 3px 10px rgba(255, 107, 129, 0.4);
+}
+/* 📌 메인 페이지 장바구니 추가 버튼 */
+.main-cart-button {
+    display: inline-block;
+    padding: 12px 20px !important;
+    font-size: 12px !important;
+    font-weight: bold !important;
+    color: white !important;
+    background-color: #eb0028ff !important;
+    border: none !important;
+    border-radius: 50px !important;
+    text-decoration: none !important;
+    font-family: 'Baloo 2', sans-serif !important;
+    transition: all 0.3s ease-in-out !important;
+    box-shadow: 3px 3px 10px rgba(255, 107, 129, 0.3) !important;
+    cursor: pointer !important;
+}
+
+/* 📌 마우스를 올렸을 때 효과 */
+.main-cart-button:hover {
+    background-color: #ba0020ff !important;
+    transform: scale(1.1) !important;
+    box-shadow: 4px 4px 12px rgba(255, 107, 129, 0.5) !important;
+}
+
+/* 📌 "장바구니에 추가" 버튼 스타일 */
+.cart-button {
+    display: inline-block;
+    padding: 12px 18px; /* 버튼 크기 조정 */
+    font-size: 16px;
+    font-weight: bold;
+    color: rgb(255, 90, 90);
+    background-color: #FFB6C1; /* 귀여운 핑크 색상 */
+    border: none;
+    border-radius: 50px; /* ✅ 동글동글하게 */
+    text-decoration: none;
+    font-family: 'Baloo 2', sans-serif;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 3px 3px 10px rgba(255, 107, 129, 0.3);
+    cursor: pointer;
+    position: relative;  /* 🔥 위치 조정을 가능하게 설정 */
+    right: 25px;  /* 🔥 왼쪽으로 10px 이동 */
+    }
+
+.cart-button:hover {
+    background-color: #ffc0c0; /* 마우스 올리면 더 진한 핑크 */
+    transform: scale(1.1); /* 살짝 커지는 효과 */
+    box-shadow: 4px 4px 12px rgba(255, 107, 129, 0.5);
+}
+
+
+/* 장바구니 목록 스타일 */
+.cart-list {
+    width: 80%;
+    margin: 20px auto;
+    text-align: center;
+}
+
+/* 장바구니 아이템 */
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    background: #acf6fa;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 10px;
+}
+
+
+/* 삭제 버튼 */
+.remove-button {
+    padding: 5px 10px;
+    background-color: #FF6B6B;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.remove-button:hover {
+    background-color: #FF3B3B;
+}
+
+.book-detail {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.book-detail-image {
+    width: 300px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.book-detail-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.back-button {
+    display: inline-block;
+    margin: 20px;
+    padding: 10px 15px;
+    background-color: #FF6B81;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: bold;
+}
+.book a {
+    pointer-events: auto; /* 링크 클릭 허용 */
+    display: block; /* 전체 요소가 클릭 가능하도록 변경 */
+}
+
+/* 장바구니 목록 스타일 */
+.cart-list {
+    width: 80%;
+    margin: 20px auto;
+    text-align: center;
+}
+
+/* 장바구니 아이템 */
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    background: #acf6fa;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 10px;
+}
+
+
+/* 삭제 버튼 */
+.remove-button {
+    padding: 5px 10px;
+    background-color: #FF6B6B;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.remove-button:hover {
+    background-color: #FF3B3B;
+}
+
+.cart-book-image {
+    width: 80px; /* 이미지 크기 */
+    height: auto;
+    border-radius: 10px;
+    margin-right: 15px; /* 제목과 간격 조정 */
+}
+table {
+    width: 80%;
+    margin: 20px auto;
+    text-align: left;
+    border-collapse: collapse; /* Remove table borders */
+}
+
+th, td {
+    padding: 10px;
+    vertical-align: middle;
+}
+
+.cart-checkbox {
+    width: 18px;
+    height: 18px;
+}
+
+.quantity-selector {
+    padding: 5px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.cart-price {
+    font-weight: bold;
+}
+
+.remove-button {
+    background-color: transparent;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+}
+.cart-item-info {
+    display: flex;
+    align-items: center; /* 이미지와 텍스트를 세로 중앙 정렬 */
+}
+
+
+/* 페이지 콘텐츠가 상단 바에 가려지지 않도록 패딩 추가 */
+body {
+    padding-top: 70px; /* 상단 바의 높이만큼 패딩 추가 */
+}
+
+
+/* ✅ 검색창과 메뉴를 감싸는 컨테이너 */
+.search-menu-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-grow: 1;  /* 검색창과 메뉴 크기 자동 조정 */
+    justify-content: center; /* 가운데 정렬 */
+}
+
+/* ✅ 네비게이션 메뉴 (왼쪽으로 조금 이동) */
+.top-menu {
+    display: flex;
+    gap: 10px;
+    flex: 0.5; /* ✅ 메뉴 크기 자동 조정 */
+    justify-content: center; /* ✅ 중앙 정렬 */
+    margin-left: -170px; /* ✅ 왼쪽으로 30px 이동 */
+    margin-right: 20px; /* ✅ 버튼과의 간격 추가 */
+}
+
+/* ✅ 상단 메뉴 스타일 */
+.top-menu a {
+    text-decoration: none;
+    color: rgb(5, 5, 5);
+    font-weight: bold;
+    padding: 10px 15px;
+    transition: all 0.3s ease-in-out;
+}
+
+.top-menu a:hover {
+    background-color:  rgb(228, 225, 225);
+    border-radius: 5px;
+}
+
+
+/* ✅ 검색창 크기 조절 */
+#searchBar {
+    flex-grow: 1;
+    max-width: 300px;
+}
+
+
+.search-container {
+    flex: 1; /* ✅ 검색창이 적절한 크기로 조정되도록 */
+    display: flex;
+    justify-content: center; /* ✅ 중앙 정렬 */
+    margin-left: -127px; /* 🔥 왼쪽으로 이동 */
+}
+
+
+
+/* 📌 푸터 스타일 */
+.footer {
+    background-color: #ffffff; /* 배경색 */
+    padding: 40px 0;
+    text-align: center;
+    border-top: 1px solid rgba(0, 0, 0, 0.1); /* 상단 경계선 */
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.footer-left {
+    flex: 1;
+    text-align: left;
+}
+
+.footer-logo {
+    width: 150px; /* 로고 크기 조정 */
+}
+
+.footer-center {
+    flex: 2;
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+    line-height: 1.5;
+}
+
+.footer-center a {
+    color: #cc0000;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer-right {
+    flex: 1;
+    text-align: right;
+}
+
+.footer-right a img:hover {
+    transform: scale(1.1);
+}
+
+.copyright {
+    margin-top: 40px;
+    font-size: 12px;
+    color: #777;
+}
+
+/* ✅ 카테고리 버튼이 로고 옆에 오도록 조정 */
+.nav-left {
+    display: flex;
+    align-items: center; /* 🔥 한 줄로 정렬 */
+    gap: 20px; /* 🔥 로고와 카테고리 버튼 간격 조정 */
+}
+
+/* ✅ 카테고리 드롭다운 스타일 */
+.dropdown {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-left: 8px; /* 🔥 카테고리 버튼을 로고에서 적당한 거리로 이동 */
+}
+
+.dropbtn {
+    background-color:  #eb0028ff;
+    color: white;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    z-index: 1;
+    top: 100%;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+/* ✅ FAQ 페이지 스타일 */
+.faq-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: "Poppins", sans-serif;
+}
+
+.faq-container h1 {
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    color: #eb0028;
+    margin-bottom: 20px;
+}
+
+.faq-item {
+    margin-bottom: 15px;
+    border-bottom: 2px solid #f1f1f1;
+    padding-bottom: 10px;
+}
+
+.faq-item h2 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.faq-item p {
+    font-size: 16px;
+    color: #555;
+}
+
+/* ✅ 반응형 디자인 */
+@media (max-width: 768px) {
+    .faq-container {
+        width: 90%;
+        padding: 15px;
+    }
+    
+    .faq-container h1 {
+        font-size: 28px;
+    }
+    
+    .faq-item h2 {
+        font-size: 18px;
+    }
+    
+    .faq-item p {
+        font-size: 14px;
+    }
+}
+
+.sc{
+    padding: 30px;
+}
+
+.cart-summary {
+    margin-top: 30px; /* 🔹 장바구니 테이블과 간격 추가 */
+    text-align: center; /* 🔹 가운데 정렬 */
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.checkout-button {
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.checkout-button:hover {
+    background-color: #45a049;
+}

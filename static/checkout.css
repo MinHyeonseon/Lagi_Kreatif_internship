@@ -1,0 +1,332 @@
+/* 📌 Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+
+/* 📌 전체 스타일 */
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.nav-left{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* 📌 검색창을 감싸는 컨테이너 */
+.search-container {
+    flex: 1; /* ✅ 검색창이 적절한 크기로 조정되도록 */
+    display: flex;
+    justify-content: center; /* ✅ 중앙 정렬 */
+}
+
+
+/* 📌 네비게이션 바 (검색창 가운데 정렬) */
+.nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 40px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+/* 📌 검색창 스타일 */
+#searchBar {
+    padding: 10px 15px;
+    width: 60%;
+    max-width: 300px;
+    border: 2px solid hsl(0, 0%, 0%);
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+}
+
+/* 📌 검색창 호버 & 포커스 효과 */
+#searchBar:hover, 
+#searchBar:focus {
+    border-color: #ff0000; /* ✅ 좀 더 진한 빨강으로 변경 */
+    box-shadow: 0px 4px 10px rgb(255, 255, 255); /* ✅ 부드러운 그림자 효과 */
+    background-color: #ffffff; /* ✅ 은은한 배경 강조 */
+}
+
+
+/* 📌 로고 */
+.logo {
+    width: 160px;
+    height: auto;
+}
+
+/* 📌 로그인 & 카트 버튼 컨테이너 */
+.top-right {
+    display: flex;
+    align-items: center;
+    gap: 30px; /* ✅ 버튼 간격 */
+    margin-right: -10px; /* 🔥 오른쪽 여백 줄이기 (기존보다 작은 값으로 조정) */
+}
+
+/* 📌 로그인 & 장바구니 버튼 스타일 (강제 적용) */
+.login-button, .cart-button {
+    display: inline-block!important;
+    padding: 9px 17px!important;
+    font-size: 13px!important;
+    font-weight: bold!important;
+    color: white !important;  /* ✅ 강제 적용 */
+    background-color: #eb0028ff !important;  /* ✅ 강제 적용 */
+    border: none!important;
+    border-radius: 25px!important;
+    text-decoration: none!important;
+    transition: all 0.3s ease-in-out!important;
+    box-shadow: 3px 3px 10px rgba(255, 77, 77, 0.3)!important; 
+}
+
+/* 📌 버튼 호버 효과 */
+.login-button:hover, .cart-button:hover {
+    background-color: #d30327ff !important;  /* ✅ 강제 적용 */
+    transform: scale(1.05);
+    box-shadow: 4px 4px 12px rgba(255, 77, 77, 0.5);
+}
+
+
+.checkout-container {
+    width: 60%;
+    margin: 50px auto;  /* 가운데 정렬 */
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    /* display: table;  <-- 삭제 */
+    /* margin-left: auto; margin-right: auto; <-- 삭제 */
+    text-align: center; /* 폼 요소나 제목 등을 가운데 정렬하고 싶으면 유지 */
+}
+
+
+.checkout-container .form-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.checkout-container label {
+    font-size: 16px;
+    font-weight: bold;
+    width: 30%;
+    text-align: left;
+}
+
+.checkout-container input {
+    width: 65%;
+    padding: 10px;
+    border: 2px solid #ff4d4d;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+}
+
+.checkout-container table {
+    margin: 0 auto;       /* 테이블 가운데 정렬 */
+    border-collapse: collapse; /* (옵션) 테이블 테두리 겹침 제거용 */
+}
+
+
+.confirm-button {
+    padding: 12px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background-color: #d30327ff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    margin-top: 20px;
+}
+
+.confirm-button:hover {
+    background-color: #ba0020ff;
+    transform: scale(1.05);
+}
+/* 배너 전체 컨테이너 */
+.banner-container {
+    margin-top: 70;
+    position: relative;
+    width: 80%;
+    max-width: 1000px;
+    height: 350px;
+    overflow: hidden;
+    margin: 50px auto;
+    border-radius: 15px; /* 둥근 모서리 */
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1); /* 그림자 */
+}
+
+/* 개별 배너 슬라이드 */
+.banner-slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0; /* 기본적으로 안 보이게 설정 */
+    transition: opacity 1s ease-in-out;
+    display: none;
+}
+
+/* 현재 보이는 슬라이드 */
+.banner-slide.active {
+    opacity: 1;
+} 
+
+/* 📌 결제수단 선택 제목 (왼쪽 상단 정렬) */
+.payment-title {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: left;  /* ✅ 왼쪽 정렬 */
+    margin-bottom: 5px;  /* ✅ 아래 여백 추가 */
+    display: block;  /* ✅ 블록 요소로 설정 */
+    width: 100%;  /* ✅ 부모 요소 크기 유지 */
+}
+
+/* 📌 결제 방법 전체 컨테이너 */
+.payment-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;  /* ✅ 왼쪽 정렬 */
+    width: 100%;
+}
+
+/* 📌 결제 방법 선택 영역 (빨간색 테두리) */
+.payment-container {
+    width: 65%;
+    padding: 15px;
+    border: 2px solid #ff4d4d;  /* ✅ 빨간색 테두리 유지 */
+    border-radius: 8px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 📌 결제 옵션 배치 */
+.payment-options {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    width: 100%;
+    justify-items: center;
+}
+
+/* 📌 개별 결제수단 선택 */
+.payment-option {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
+    width: 100%;
+}
+
+/* 📌 결제수단 이미지 */
+.payment-img {
+    width: 80px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* 📌 선택한 결제수단 강조 */
+.payment-option input:checked + .payment-img {
+    transform: scale(1.1);
+    border: 2px solid #ff0000;
+}
+/* ✅ 검색창과 메뉴를 감싸는 컨테이너 */
+.search-menu-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-grow: 1;  /* 검색창과 메뉴 크기 자동 조정 */
+    justify-content: center; /* 가운데 정렬 */
+}
+
+/* ✅ 네비게이션 메뉴 (왼쪽으로 조금 이동) */
+.top-menu {
+    display: flex;
+    gap: 10px;
+    flex: 0.5; /* ✅ 메뉴 크기 자동 조정 */
+    justify-content: center; /* ✅ 중앙 정렬 */
+    margin-left: -170px; /* ✅ 왼쪽으로 30px 이동 */
+    margin-right: 20px; /* ✅ 버튼과의 간격 추가 */
+}
+
+/* ✅ 상단 메뉴 스타일 */
+.top-menu a {
+    text-decoration: none;
+    color: rgb(5, 5, 5);
+    font-weight: bold;
+    padding: 10px 15px;
+    transition: all 0.3s ease-in-out;
+}
+
+.top-menu a:hover {
+    background-color:  rgb(228, 225, 225);
+    border-radius: 5px;
+}
+
+
+.search-container {
+    flex: 1; /* ✅ 검색창이 적절한 크기로 조정되도록 */
+    display: flex;
+    justify-content: center; /* ✅ 중앙 정렬 */
+    margin-left: -127px; /* 🔥 왼쪽으로 이동 */
+}
+
+/* ✅ 카테고리 드롭다운 스타일 */
+.dropdown {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-left: 8px; /* 🔥 카테고리 버튼을 로고에서 적당한 거리로 이동 */
+}
+
+.dropbtn {
+    background-color:  #eb0028ff;
+    color: white;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    z-index: 1;
+    top: 100%;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
