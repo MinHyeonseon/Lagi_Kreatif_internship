@@ -374,7 +374,9 @@ def book_intro():
 def inject_cart_count():
     return {"cart_count": len(cart_items)}  # ✅ 장바구니 개수를 모든 템플릿에서 사용 가능하도록 설정
 
-
+@app.route("/manual", endpoint="manual")  # ✅ 엔드포인트 명확히 설정
+def manual():
+    return render_template("manual.html")
 
 # Flask 애플리케이션 실행
 if __name__ == "__main__":
