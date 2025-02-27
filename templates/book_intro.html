@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Introduction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <!-- ✅ 메인페이지와 동일한 상단바 -->
+    <header class="nav-bar">
+        <div class="nav-left">
+            <a href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='uploads/logo.png') }}" alt="Al-Fattah Logo" class="logo">
+            </a>            
+            <div class="dropdown">
+                <button class="dropbtn">☰ Category</button>
+                <div class="dropdown-content">
+                    <a href="{{ url_for('book_intro') }}">Book</a>
+                    <a href="{{ url_for('faq') }}">FAQ</a>  
+                    <a href="{{ url_for('company') }}">Company</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="search-container">
+            <input type="text" id="searchBar" placeholder="Please enter the book title.">
+        </div>
+
+        <nav class="top-menu">
+            <a href="{{ url_for('new_books') }}">NewItem</a>
+            <a href="{{ url_for('best_books') }}">Best</a>
+            <a href="{{ url_for('mypage') }}">MyPage</a>  
+            <a href="{{ url_for('order') }}">Order</a>  
+        </nav>        
+
+        <div class="top-right">
+            {% if user_logged_in %}
+                <a href="{{ url_for('logout') }}" class="login-button">Logout</a>
+            {% else %}
+                <a href="{{ url_for('login') }}" class="login-button">Login</a>
+            {% endif %}
+            <a href="{{ url_for('cart_page') }}" class="cart-button">
+                🛒 CART <span id="cart-count">{% if cart_count > 0 %} ({{ cart_count }}) {% endif %}</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- ✅ 페이지 내용 -->
+    <div class="content">
+        <h1>📚 Book Introduction</h1>
+        <p>Welcome to the book introduction page.</p>
+        <p>Here, you can find information about our available books.</p>
+    </div>
+
+    <!-- ✅ 푸터 -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <img src="{{ url_for('static', filename='uploads/logo.png') }}" alt="Lagi Kreatif Logo" class="footer-logo">
+            </div>
+            <div class="footer-center">
+                <p>Jalan Permata Inten No.46/83 Cisaranten Kulon Kecamatan Arcamanik</p>
+                <p>Kota Bandung Jawa Barat 40293 Indonesia</p>
+                <p><a href="mailto:hello@lagikreatif.com">hello@lagikreatif.com</a> <span class="phone">+62 811 2205 550</span></p>
+            </div>
+        </div>
+        <p class="copyright">Copyright © 2025 AI-Fattah</p>
+    </footer>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

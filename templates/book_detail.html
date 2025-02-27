@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ book.title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='book_detail.css') }}">
+</head>
+<body>
+    <header class="nav-bar">
+        <!-- 왼쪽 로고 -->
+        <div class="nav-left">
+            <a href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='uploads/logo.png') }}" alt="Al-Fattah Logo" class="logo">
+            </a>            
+        <!-- ✅ 카테고리 드롭다운 추가 -->
+        <div class="dropdown">
+            <button class="dropbtn">☰ Category</button>
+            <div class="dropdown-content">
+                <a href="{{ url_for('book_intro') }}">Book</a> 
+                <a href="{{ url_for('faq') }}">FAQ</a>  
+                <a href="{{ url_for('company') }}">Company</a>
+            </div>
+        </div>        
+    </div>
+          <!-- ✅ 검색창 (따로 분리) -->
+    <div class="search-container">
+        <input type="text" id="searchBar" placeholder="Please enter the book title.">
+    </div>
+
+    <!-- ✅ 네비게이션 메뉴 (검색창과 분리) -->
+    <nav class="top-menu">
+        <a href="{{ url_for('new_books') }}">NewItem</a>
+             <a href="/best">Best</a>
+            <a href="/mypage">MyPage</a>  
+            <a href="/order">Order</a>  
+        </nav>        
+    </nav>
+    
+        <!-- ✅ 로그인 및 장바구니 버튼 -->
+        <div class="top-right">
+            {% if user_logged_in %}
+                <a href="{{ url_for('logout') }}" class="login-button">Logout</a>
+            {% else %}
+                <a href="{{ url_for('login') }}" class="login-button">Login</a>
+            {% endif %}
+            <a href="{{ url_for('cart_page') }}" class="cart-button">
+                🛒 CART <span id="cart-count">{% if cart_count > 0 %} ({{ cart_count }}) {% endif %}</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- ✅ 책 상세 정보 영역 -->
+    <div class="book-detail-container">
+        <!-- 왼쪽 이미지 영역 -->
+        <div class="book-image">
+            <img src="{{ book.image }}" alt="{{ book.title }}">
+        </div>
+
+        <!-- 오른쪽 책 정보 영역 -->
+        <div class="book-info">
+            <h1 class="book-title">{{ book.title }}</h1>
+            
+            <hr>
+
+            <div class="price-info">
+                <p class="book-price">IDR  {{ book.price }}</p>
+            </div>
+
+            <div class="shipping-info">
+                <h5>Shipping Fee: IDP  </h5>
+            </div>
+
+            <div class="payment-method">
+                <h5>Payment method: Card</h5>
+            </div>
+            
+
+            <!-- 장바구니 추가 버튼 -->
+
+            <div class="book">
+                <div class="purchase-options">
+                    <h3><label for="quantity">Quantity: </label></h3>
+                    <input type="number" id="quantity" name="quantity" value="1" min="1">
+                    
+                    {% if user_logged_in %}
+                        <!-- quantity 값을 addToCart로 전달 -->
+                        <button class="cart-button" onclick="addToCart('{{ book.title }}', '{{ book.price }}', '{{ book.image }}', document.getElementById('quantity').value)">Add to Cart</button>
+                         <!-- 바로 구매하기 버튼 -->
+                         <button class="cart-button" onclick="buyNow('{{ book.title }}', '{{ book.price }}', '{{ book.image }}', document.getElementById('quantity').value)">Buy Now</button>
+                    {% else %}
+                        <button class="cart-button" onclick="alertLoginRequired()">Add to Cart</button>
+                        <button class="cart-button" onclick="alertLoginRequired()">Buy Now</button>
+                    {% endif %}
+                </div>
+                
+                <div class="product-name">Al Quran Custom Nama Anak - <br>Alquran Hafalan Terjemah Per Kata Syaamil A5</div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- ============================================================= -->
+    
+    <!-- ============================================================= -->
+    
+    <!-- ============================================================= -->
+
+
+    <!-- 책 상세 페이지 내용 (기본 접힌 상태로 시작) -->
+    <div class="book-content collapsed" id="bookContent">
+    <!-- <div class="book-content"> -->
+        <h1>Al-Quran Hafalan Custom Nama</h1>
+        <p>Design Khusus untuk Anak Agar Mudah Menghafal dan Membaca Alquran</p>
+
+        <section class="product-details">
+            <div class="description">
+                <p><strong>Design Warna-Warni yang Menarik. Cocok juga dijadikan hadiah ya Ayah Bunda Om Tante 😍</strong></p>
+                <p><strong>Pre Order 5-7 Hari Kerja</strong> (Tidak termasuk Sabtu, Minggu dan Hari Libur Nasional)</p>
+    
+                <p><strong>NOTES:</strong> Apabila tidak menuliskan nama di CATATAN saat check out, orderan akan kami cetak langsung tanpa nama dan tanpa konfirmasi terlebih dahulu.</p>
+                <hr>
+                <h3>Jaminan Kualitas Terbaik dan Kehalalan</h3>
+                <p>Al-Quran dari Syaamil Quran terjamin kualitas dan kehalalannya, dengan bahan baku kertas terbaik (QPP Premium, bukan HVS), yang teruji halal dari MUI.</p>
+                <p>Proses produksi dan penyimpanannya dijamin halal, dari bahan, peralatan, hingga pengemasan. Mesin percetakan dan bahan yang digunakan terbebas dari najis, memastikan kesucian Al-Quran.</p>
+                <p>Para pekerja juga selalu dalam keadaan berwudhu untuk menjaga kesucian dalam proses percetakan.</p>
+            </div>
+            <div class="image-container">
+                <img src="{{ url_for('static', filename='uploads/5.jpg') }}" alt="Al-Quran Image">
+                <img src="{{ url_for('static', filename='uploads/2.png') }}" alt="Al-Quran Image">
+                <img src="{{ url_for('static', filename='uploads/3.png') }}" alt="Al-Quran Image">
+                <img src="{{ url_for('static', filename='uploads/4.jpg') }}" alt="Al-Quran Image">
+                <img src="{{ url_for('static', filename='uploads/1.jpg') }}" alt="Al-Quran Image">
+            </div>
+        </section>
+
+        <br><br><br><hr>
+        <section class="product-specifications">
+            <h2>Spesifikasi</h2>
+            <div class="specifications-list">
+                <div>- Menggunakan Quran Paper (QPP) yang sudah dipastikan HALAL oleh MUI.</div>
+                <div>- Ukuran A5</div>
+                <div>- Telah melalui proses tashih oleh Kementrian Agama RI.</div>
+                <div>- Cover Art Paper Laminasi Glossy</div>
+            </div>
+    
+            <h3>KELEBIHAN MUSHAF</h3>
+            <div class="kelebihan-list">
+                <div>1. Kertas QPP yang tahan hingga 100 tahun</div>
+                <div>2. Blok 4 warna yang memudahkan untuk menghafal</div>
+                <div>3. Terjemah standar depag RI</div>
+                <div>4. Terjemah per kata</div>
+                <div>5. Penanda tajwid berwarna pada huruf</div>
+                <div>6. Audio Motivasi menghafal tiap halaman (scan QR Code)</div>
+                <div>7. Audio tilawah per blok (scan QR Code)</div>
+                <div>8. Penanda awal ayat</div>
+                <div>9. Doa khatmil Quran</div>
+                <div>10. Tanda tanda khusus dalam al Quran</div>
+                <div>11. Kalimat awal halaman</div>
+            </div>
+    
+            <p><strong>*Untuk Klaim Garansi Barang Rusak / Tidak Lengkap WAJIB dilengkapi UNBOXING VIDEO Ya</strong></p>
+            <p><strong>*Garansi Seumur Hidup Jika Terdapat Halaman Yang Kurang/Tidak Lengkap Boleh Hubungi Kami Kapan Saja & Retur Produk</strong></p>
+        </section>
+        <footer>
+            <p>&copy; 2025 Syaamil Quran. All rights reserved.</p>
+        </footer>
+    </div>
+    </div>
+    <!-- <button class="toggle-button" onclick="toggleContent()">Read more</button> -->
+    <script>
+        function toggleContent() {
+          var content = document.getElementById('content');
+          if (content.style.display === 'none') {
+            content.style.display = 'block';
+          } else {
+            content.style.display = 'none';
+          }
+        }
+    </script>
+
+    <div class="toggle-button-container">
+    <button class="toggle-button" onclick="toggleContent()">Read more / See Less</button>
+    </div>
+    </div>
+
+    <!-- ============================================================= -->
+    
+    <!-- ============================================================= -->
+    
+    <!-- ============================================================= -->
+
+    <div class="comment-section">
+        <h3>COMMENTS</h3>
+        <!-- 댓글 입력 폼 -->
+        <textarea id="commentInput" placeholder="Write a comment.." rows="4" cols="50"></textarea>
+        <button class="c_button" onclick="postComment()">Write comments</button> <!-- 버튼 이름을 c_button으로 변경 -->
+    
+        <!-- 작성된 댓글을 표시할 영역 -->
+        <div id="commentsContainer">
+            <!-- 댓글은 여기에 동적으로 추가됩니다. -->
+        </div>
+    </div>
+
+    <!-- ============================================================= -->
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <img src="{{ url_for('static', filename='uploads/logo_t.png') }}" alt="Lagi Kreatif Logo" class="footer-logo">
+            </div>
+            <div class="footer-center">
+                <p>Jalan Permata Inten No.46/83 Cisaranten Kulon Kecamatan Arcamanik</p>
+                <p>Kota Bandung Jawa Barat 40293 Indonesia</p>
+                <p><a href="mailto:hello@lagikreatif.com">hello@lagikreatif.com</a>  <span class="phone">+628112205550</span></p>
+            </div>
+        </div>
+        <p class="copyright">Copyright © 2025 Lagi Kreatif</p>
+    </footer>   
+
+    <script src="{{ url_for('static', filename='book_detail.js') }}"></script>
+
+    
+</body>
+</html>

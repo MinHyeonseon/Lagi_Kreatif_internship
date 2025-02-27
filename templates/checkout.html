@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Syaamil Quran</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='checkout.css') }}">
+</head>
+<body>
+    <header class="nav-bar">
+        <!-- 왼쪽 로고 -->
+        <div class="nav-left">
+            <a href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='uploads/logo.png') }}" alt="Al-Fattah Logo" class="logo">
+            </a>            
+        <!-- ✅ 카테고리 드롭다운 추가 -->
+        <div class="dropdown">
+            <button class="dropbtn">☰ Category</button>
+            <div class="dropdown-content">
+                <a href="{{ url_for('book_intro') }}">Book</a> 
+                <a href="{{ url_for('faq') }}">FAQ</a>  
+                <a href="{{ url_for('company') }}">Company</a>
+            </div>
+        </div>        
+    </div>
+          <!-- ✅ 검색창 (따로 분리) -->
+    <div class="search-container">
+        <input type="text" id="searchBar" placeholder="Please enter the book title.">
+    </div>
+
+    <!-- ✅ 네비게이션 메뉴 (검색창과 분리) -->
+    <nav class="top-menu">
+        <a href="{{ url_for('new_books') }}">NewItem</a>
+             <a href="/best">Best</a>
+            <a href="/mypage">MyPage</a>  
+            <a href="/order">Order</a>  
+        </nav>        
+    </nav>
+    
+        <!-- ✅ 로그인 및 장바구니 버튼 -->
+        <div class="top-right">
+            {% if user_logged_in %}
+                <a href="{{ url_for('logout') }}" class="login-button">Logout</a>
+            {% else %}
+                <a href="{{ url_for('login') }}" class="login-button">Login</a>
+            {% endif %}
+            <a href="{{ url_for('cart_page') }}" class="cart-button">
+                🛒 CART <span id="cart-count">{% if cart_count > 0 %} ({{ cart_count }}) {% endif %}</span>
+            </a>
+        </div>
+    </header>
+
+    <h2>🛒 Checkout Page</h2>
+
+    <div class="checkout-container">
+        <h3>Your Cart Items</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody id="cartTableBody">
+                {% if cart_items and cart_items|length > 0 %}
+                    {% for book in cart_items %}
+                    <tr class="cart-row">
+                        <td class="cart-item-info">{{ book.title }}</td>
+                        <td>{{ book.quantity }}</td>
+                        <td class="cart-price" data-price="{{ book.price }}">IDR {{ book.price * book.quantity }}</td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr id="emptyCartMessage">
+                        <td colspan="3" style="color:red; font-weight:bold;">🚨 Your cart is empty. Please add items before proceeding to checkout.</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+
+        <h3>Total Price: IDR <span id="totalPrice">{{ total_price }}</span></h3>
+
+        <form id="checkoutForm">
+
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="address1">Address Line 1</label>
+                <input type="text" id="address1" name="address1" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="address2">Address Line 2</label>
+                <input type="text" id="address2" name="address2">
+            </div>
+            
+            <div class="form-group">
+                <label for="city">Town/City</label>
+                <input type="text" id="city" name="city" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="postcode">Postcode</label>
+                <input type="text" id="postcode" name="postcode" required>
+            </div>
+
+            <div class="form-group">
+                <label for="note">Note</label>
+                <input type="text" id="note" name="note">
+            </div>
+
+            <div class="form-group">
+                <label>Select Payment Method</label>
+                <div class="payment-container">
+                    <div class="payment-options">
+                        {% set payment_methods = [
+                            "BANK BUKOPIN.png", "banktransfer.png", "BCA.png", "bii.png", "BNI.png",
+                            "BRI.png", "btn.png", "CIMB Clicks.png", "CIMBNIAGA.png", "DANA.png", "Danamon.png",
+                            "gopay.png", "JCB.png", "Mandiri.png", "MasterCard.png", "MEGA.png", "ocbc nisp.png",
+                            "PaninBank.png", "PermataBank.png", "ShopeePay.png", "Visa.png"
+                        ] %}
+                    
+                        {% for payment in payment_methods %}
+                        <label class="payment-option">
+                            <input type="radio" name="payment_method" value="{{ payment }}" required>
+                            <img src="{{ url_for('static', filename='payment/' + payment) }}" alt="{{ payment }}" class="payment-img">
+                        </label>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            
+            <button type="submit" class="confirm-button">Confirm Purchase</button>
+        </form>
+    </div>
+
+    <script src="{{ url_for('static', filename='checkout.js') }}"></script>
+</body>
+</html>
