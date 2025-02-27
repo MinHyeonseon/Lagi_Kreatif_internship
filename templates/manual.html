@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='manual.css') }}">
+</head>
+<body>
+    <header class="nav-bar">
+        <!-- 왼쪽 로고 -->
+        <div class="nav-left">
+            <a href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='uploads/logo.png') }}" alt="Al-Fattah Logo" class="logo">
+            </a>            
+        <!-- ✅ 카테고리 드롭다운 추가 -->
+        <div class="dropdown">
+            <button class="dropbtn">☰ Category</button>
+            <div class="dropdown-content">
+                <a href="{{ url_for('book_intro') }}">Book</a> 
+                <a href="{{ url_for('faq') }}">FAQ</a>  
+                <a href="{{ url_for('company') }}">Company</a>
+            </div>
+        </div>        
+    </div>
+          <!-- ✅ 검색창 (따로 분리) -->
+    <div class="search-container">
+        <input type="text" id="searchBar" placeholder="Please enter the book title.">
+    </div>
+
+    <!-- ✅ 네비게이션 메뉴 (검색창과 분리) -->
+    <nav class="top-menu">
+        <a href="{{ url_for('new_books') }}">NewItem</a>
+             <a href="/best">Best</a>
+            <a href="/mypage">MyPage</a>  
+            <a href="/order">Order</a>  
+        </nav>        
+    </nav>
+    
+        <!-- ✅ 로그인 및 장바구니 버튼 -->
+        <div class="top-right">
+            {% if user_logged_in %}
+                <a href="{{ url_for('logout') }}" class="login-button">Logout</a>
+            {% else %}
+                <a href="{{ url_for('login') }}" class="login-button">Login</a>
+            {% endif %}
+            <a href="{{ url_for('cart_page') }}" class="cart-button">
+                🛒 CART <span id="cart-count">{% if cart_count > 0 %} ({{ cart_count }}) {% endif %}</span>
+            </a>
+        </div>
+    </header>
+
+    <div class="content">
+        <br>
+        <h1>📚 Manual</h1>
+        <h2><p>Check out our manual images!</p></h2>
+    </div>
+
+    <div class="image-container">
+        <img src="{{ url_for('static', filename='uploads/11.png') }}" alt="Al-Quran Image"><br>
+        <img src="{{ url_for('static', filename='uploads/22.png') }}" alt="Al-Quran Image"><br>
+        <img src="{{ url_for('static', filename='uploads/33.png') }}" alt="Al-Quran Image"><br>
+        <img src="{{ url_for('static', filename='uploads/44.png') }}" alt="Al-Quran Image"><br>
+        <img src="{{ url_for('static', filename='uploads/55.png') }}" alt="Al-Quran Image"><br>
+        <img src="{{ url_for('static', filename='uploads/66.png') }}" alt="Al-Quran Image"><br>
+        <img src="{{ url_for('static', filename='uploads/77.png') }}" alt="Al-Quran Image"><br>
+        <img src="{{ url_for('static', filename='uploads/88.png') }}" alt="Al-Quran Image"><br>
+        <img src="{{ url_for('static', filename='uploads/99.png') }}" alt="Al-Quran Image"><br>
+        <img src="{{ url_for('static', filename='uploads/1010.png') }}" alt="Al-Quran Image"><br>
+        <img src="{{ url_for('static', filename='uploads/1111.png') }}" alt="Al-Quran Image"><br>
+        <img src="{{ url_for('static', filename='uploads/1212.png') }}" alt="Al-Quran Image"><br>
+        <img src="{{ url_for('static', filename='uploads/1313.png') }}" alt="Al-Quran Image"><br>
+        <img src="{{ url_for('static', filename='uploads/1515.png') }}" alt="Al-Quran Image"><br>
+        <img src="{{ url_for('static', filename='uploads/2020.png') }}" alt="Al-Quran Image"><br>
+        <img src="{{ url_for('static', filename='uploads/1616.png') }}" alt="Al-Quran Image"><br>
+        <img src="{{ url_for('static', filename='uploads/1717.png') }}" alt="Al-Quran Image"><br>
+        <img src="{{ url_for('static', filename='uploads/1919.png') }}" alt="Al-Quran Image"><br>
+        <img src="{{ url_for('static', filename='uploads/2121.png') }}" alt="Al-Quran Image"><br>
+        <img src="{{ url_for('static', filename='uploads/2222.png') }}" alt="Al-Quran Image"><br>
+        <img src="{{ url_for('static', filename='uploads/2323.png') }}" alt="Al-Quran Image"><br>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <img src="{{ url_for('static', filename='uploads/logo_t.png') }}" alt="Lagi Kreatif Logo" class="footer-logo">
+            </div>
+            <div class="footer-center">
+                <p>Jalan Permata Inten No.46/83 Cisaranten Kulon Kecamatan Arcamanik</p>
+                <p>Kota Bandung Jawa Barat 40293 Indonesia</p>
+                <p><a href="mailto:hello@lagikreatif.com">hello@lagikreatif.com</a>  <span class="phone">+628112205550</span></p>
+            </div>
+        </div>
+        <p class="copyright">Copyright © 2025 Lagi Kreatif</p>
+    </footer>   
+
+    <script src="{{ url_for('static', filename='book_detail.js') }}"></script>
+
+
+    <script src="{{ url_for('static', filename='manual.js') }}"></script>
+</body>
+</html>
