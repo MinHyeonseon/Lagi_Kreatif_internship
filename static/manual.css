@@ -1,0 +1,305 @@
+/* 📌 Google Fonts 가져오기 */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+
+/* ✅ 검색창과 메뉴를 감싸는 컨테이너 */
+.search-menu-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-grow: 1;  /* 검색창과 메뉴 크기 자동 조정 */
+    justify-content: center; /* 가운데 정렬 */
+}
+
+/* ✅ 네비게이션 메뉴 (왼쪽으로 조금 이동) */
+.top-menu {
+    display: flex;
+    gap: 10px;
+    flex: 0.5; /* ✅ 메뉴 크기 자동 조정 */
+    justify-content: center; /* ✅ 중앙 정렬 */
+    margin-left: -170px; /* ✅ 왼쪽으로 30px 이동 */
+    margin-right: 20px; /* ✅ 버튼과의 간격 추가 */
+}
+
+/* ✅ 상단 메뉴 스타일 */
+.top-menu a {
+    text-decoration: none;
+    color: rgb(5, 5, 5);
+    font-weight: bold;
+    padding: 10px 15px;
+    transition: all 0.3s ease-in-out;
+}
+
+.top-menu a:hover {
+    background-color:  rgb(228, 225, 225);
+    border-radius: 5px;
+}
+
+
+.search-container {
+    flex: 1; /* ✅ 검색창이 적절한 크기로 조정되도록 */
+    display: flex;
+    justify-content: center; /* ✅ 중앙 정렬 */
+    margin-left: -127px; /* 🔥 왼쪽으로 이동 */
+}
+
+/*====================================================*/
+/* =================== 카테고리 부분 =================== */
+/*====================================================*/
+/* ✅ 카테고리 드롭다운 스타일 */
+.dropdown {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-left: 8px; /* 🔥 카테고리 버튼을 로고에서 적당한 거리로 이동 */
+}
+
+.dropbtn {
+    background-color:  #eb0028ff;
+    color: white;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    z-index: 1;
+    top: 100%;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/*====================================================*/
+/* ================================================== */
+/*====================================================*/
+
+.footer p {
+    font-size: 14px;
+}
+
+/* 📌 전체 스타일 */
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.nav-left{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* 📌 검색창을 감싸는 컨테이너 */
+.search-container {
+    flex: 1; /* ✅ 검색창이 적절한 크기로 조정되도록 */
+    display: flex;
+    justify-content: center; /* ✅ 중앙 정렬 */
+}
+
+/* 📌 검색창 스타일 */
+#searchBar {
+    padding: 10px 15px;
+    width: 60%;
+    max-width: 300px;
+    border: 2px solid hsl(0, 0%, 0%);
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+}
+
+/* 📌 검색창 호버 & 포커스 효과 */
+#searchBar:hover, 
+#searchBar:focus {
+    border-color: #ff0000; /* ✅ 좀 더 진한 빨강으로 변경 */
+    box-shadow: 0px 4px 10px rgb(255, 255, 255); /* ✅ 부드러운 그림자 효과 */
+    background-color: #ffffff; /* ✅ 은은한 배경 강조 */
+}
+
+/* 📌 로고 */
+.logo {
+    width: 160px;
+    height: auto;
+}
+
+/* 📌 로그인 & 카트 버튼 컨테이너 */
+.top-right {
+    display: flex;
+    align-items: center;
+    gap: 30px; /* ✅ 버튼 간격 */
+    margin-right: -10px; /* 🔥 오른쪽 여백 줄이기 (기존보다 작은 값으로 조정) */
+}
+
+/* 📌 로그인 & 장바구니 버튼 스타일 (강제 적용) */
+.login-button, .cart-button {
+    display: inline-block!important;
+    padding: 9px 17px!important;
+    font-size: 13px!important;
+    font-weight: bold!important;
+    color: white !important;  /* ✅ 강제 적용 */
+    background-color: #eb0028ff !important;  /* ✅ 강제 적용 */
+    border: none!important;
+    border-radius: 25px!important;
+    text-decoration: none!important;
+    transition: all 0.3s ease-in-out!important;
+    box-shadow: 3px 3px 10px rgba(255, 77, 77, 0.3)!important; 
+}
+
+/* 📌 버튼 호버 효과 */
+.login-button:hover, .cart-button:hover {
+    background-color: #d30327ff !important;  /* ✅ 강제 적용 */
+    transform: scale(1.05);
+    box-shadow: 4px 4px 12px rgba(255, 77, 77, 0.5);
+}
+
+.dropdown {
+    position: relative;
+}
+
+.login-container input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid #db8181df;
+    border-radius: 10px;
+    font-size: 16px;
+    outline: none;
+}
+
+
+/* 📌 마우스를 올렸을 때 효과 */
+.main-cart-button:hover {
+    background-color: #ff0c0c !important;
+    transform: scale(1.1) !important;
+    box-shadow: 4px 4px 12px rgba(255, 107, 129, 0.5) !important;
+}
+
+/* 📌 "장바구니에 추가" 버튼 스타일 */
+.cart-button {
+    display: inline-block;
+    padding: 12px 18px; /* 버튼 크기 조정 */
+    font-size: 16px;
+    font-weight: bold;
+    color: rgb(255, 90, 90);
+    background-color: #FFB6C1; /* 귀여운 핑크 색상 */
+    border: none;
+    border-radius: 50px; /* ✅ 동글동글하게 */
+    text-decoration: none;
+    font-family: 'Baloo 2', sans-serif;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 3px 3px 10px rgba(255, 107, 129, 0.3);
+    cursor: pointer;
+    position: relative;  /* 🔥 위치 조정을 가능하게 설정 */
+    right: 25px;  /* 🔥 왼쪽으로 10px 이동 */
+    }
+
+
+.nav-bar {
+    position: fixed; /* 스크롤 시에도 고정 */
+    top: 0; /* 화면 상단에 고정 */
+    left: 0;
+    width: 100%; /* 화면의 전체 너비로 설정 */
+    background-color: #fff; /* 배경색 설정 (필요에 따라 조정) */
+    z-index: 1000; /* 다른 요소보다 위에 보이도록 설정 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+/* 페이지 콘텐츠가 상단 바에 가려지지 않도록 패딩 추가 */
+body {
+    padding-top: 70px; /* 상단 바의 높이만큼 패딩 추가 */
+}
+
+.content{
+    background-color: white;
+    padding: 50px;
+    max-width: 53%;
+    margin: 0 auto;
+    margin-bottom: 5px;
+}
+
+
+
+/* 📌 푸터 스타일 */
+.footer {
+
+    padding: 40px 0;
+    text-align: center;
+    border-top: 1px solid rgba(0, 0, 0, 0.1); /* 상단 경계선 */
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.footer-left {
+    flex: 1;
+    text-align: left;
+}
+
+.footer-logo {
+    width: 150px; /* 로고 크기 조정 */
+}
+
+.footer-center {
+    flex: 2;
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+    line-height: 1.5;
+}
+
+.footer-center a {
+    color: #cc0000;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer-right {
+    flex: 1;
+    text-align: right;
+}
+
+.footer-right a img:hover {
+    transform: scale(1.1);
+}
+
+.copyright {
+    margin-top: 40px;
+    font-size: 12px;
+    color: #777;
+}
+
